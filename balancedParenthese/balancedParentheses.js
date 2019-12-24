@@ -22,5 +22,5 @@ var isBalanced = function(str) {
     }
     //  (left number parentheses  =  right number parentheses)?
     return parentheses['('] === parentheses[')'];
-  };
-  
+};
+//This is a simple solution for Balanced Parenthesis problem yet, it could be 

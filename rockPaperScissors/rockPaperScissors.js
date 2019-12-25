@@ -29,7 +29,7 @@ var rockPaperScissors = function (numberOfSeq) {
     }
     //O(n^3)
     while (solution.length < Math.pow(numberOfSeq, 3)) {
-        for (var i = 0; i < 3; i++) {
+        for (var i = 0; i < numberOfSeq; i++) {
             var random = getRandomInt(3)
             str += plays[random]
         }

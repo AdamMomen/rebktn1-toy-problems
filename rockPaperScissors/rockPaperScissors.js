@@ -18,7 +18,31 @@
 *
 */
 
-var rockPaperScissors = function (
-) {
-  // TODO: your solution here
+// Brute Force solution O(2n^3) time complexity
+var rockPaperScissors = function (numberOfSeq) {
+    var solution = [];
+    var str = '';
+    let plays = {
+        0: 'R',
+        1: 'P',
+        2: 'S',
+    }
+    //O(n^3)
+    while (solution.length < Math.pow(numberOfSeq, 3)) {
+        for (var i = 0; i < 3; i++) {
+            var random = getRandomInt(3)
+            str += plays[random]
+        }
+        //O(n)
+        if (!solution.includes(str)) {
+            solution.push(str)
+        }
+        str = '';
+    }
+    return solution;
 };
+
+// random number genrator between 0 and max - 1
+function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+}

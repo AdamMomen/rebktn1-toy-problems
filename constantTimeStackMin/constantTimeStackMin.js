@@ -17,24 +17,33 @@
 /**
   * Stack Class
   */
-  var Stack = function() {
+var Stack = function () {
+  this.storage = [];
+  this.min = null;
+};
+// add an item to the top of the stack
+Stack.prototype.push = function (value) {
+  //  storage is empty? , 
+  !this.storage.length ?
+    //assign the first value pushed to min
+    this.min = value :
+    // value less than min ? assign it to min
+    value < this.min ? this.min = value : ''
 
-  // add an item to the top of the stack
-    this.push = function(value) {
-    };
+  this.storage.push(value);
+};
+// remove an item from the top of the stack
+Stack.prototype.pop = function () {
+  this.storage.pop();
 
-  // remove an item from the top of the stack
-    this.pop = function() {
-    };
+};
 
-  // return the number of items in the stack
-    this.size = function() {
-    };
-  
-  // return the minimum value in the stack
-    this.min = function() {
+// return the number of items in the stack
+Stack.prototype.size = function () {
+  return this.storage.length
+};
 
-    };
-
-  };
-
+// return the minimum value in the stack
+Stack.prototype.min = function () {
+  return this.min;
+};

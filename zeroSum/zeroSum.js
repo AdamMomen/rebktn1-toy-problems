@@ -11,12 +11,14 @@ zeroSum([ 5, 7, 2, 9 ]) // false
 //output => boolean
 
 function zeroSum(array) {
-    var elementObj = {}
-    array.forEach(element => { elementObj[element] = element })
-    for (var key in elementObj) {
-        if (elementObj[-(JSON.parse(key))]) {
-            return true
-        }
+  var numbersObj = {}
+  // fill the object with numbers
+  array.forEach(element => { numbersObj[element] = element })
+  for (var key in numbersObj) {
+    // check if we have reverse sign number of each number
+    if (numbersObj[-(JSON.parse(key))]) {
+      return true
     }
-    return false
+  }
+  return false
 }

@@ -20,26 +20,33 @@ var getIndexBelowMaxForKey = function(str, max) {
   return hash % max;
 };
 
-var makeHashTable = function() {
+var makeHashTable = function(size = 4) {
   var result = {};
   var storage = [];
-  var storageLimit = 4;
+  var storageLimit = size;
   var size = 0;
   
-  result.insert = function(/*...*/ 
-) {
-    // TODO: implement `insert`
+  result.insert = function(value) {
+    var index = getIndexBelowMaxForKey( value , storageLimit)
+       storage[index] = value
+       ++size;
   };
 
-  result.retrieve = function(/*...*/ 
-) {
-    // TODO: implement `retrieve`
+  result.retrieve = function(value) {
+    var index = getIndexBelowMaxForKey( value , storageLimit)
+    return storage[index]
   };
 
-  result.remove = function(/*...*/ 
-) {
-    // TODO: implement `remove`
+  result.remove = function(value) {   
+  var index = getIndexBelowMaxForKey( value , storageLimit)
+  var deleted = storage[index];
+  delete storage[index];
+  --size
+   return deleted
   };
 
   return result;
 };
+//    Input:
+
+// HT.insert({"foo":"bar"}) => ["",bar]

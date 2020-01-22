@@ -54,5 +54,9 @@ var numbersToPlace = {
 };
 
 function numberToEnglish(number) {
-  // your code here...
+//new ideas naive solution 
+var strNumber  = number.toString().split('')
+var parsed = parseInt(strNumber.slice(1).length)
+
+ return numbersToWords[strNumber[0]] + ' ' + numbersToPlace[Math.pow(10 , parsed)] + numberToEnglish(parseInt(number));
 }

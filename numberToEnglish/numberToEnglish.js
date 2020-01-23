@@ -54,9 +54,18 @@ var numbersToPlace = {
 };
 
 function numberToEnglish(number) {
+  debugger;
 //new ideas naive solution 
 var strNumber  = number.toString().split('')
-var parsed = parseInt(strNumber.slice(1).length)
 
+if(number < 100){
+  // slice the first number
+console.log(numbersToWords[strNumber[0] +"0"] + strNumber[1]!="0"? numbersToWords[`${strNumber[1]}`]:'')
+ return  numbersToWords[strNumber[0] +"0"] + strNumber[1]!="0"? numbersToWords[`${strNumber[1]}`]:''
+  // .toString().split('')
+  // add zero to it.
+}
+var strNumber  = number.toString().split('')
+var parsed = parseInt(strNumber.slice(1).length)
  return numbersToWords[strNumber[0]] + ' ' + numbersToPlace[Math.pow(10 , parsed)] + numberToEnglish(parseInt(number));
 }

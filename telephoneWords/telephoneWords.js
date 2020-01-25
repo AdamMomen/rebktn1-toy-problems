@@ -11,5 +11,61 @@ telephoneWords("1123") // [ "11AD", "11AE", "11AF", "11BD", "11BE", "11BF", "11C
 */
 
 function telephoneWords(digitString) {
-  // your code here...
+  var charObject = {
+    2: {
+      a: "a",
+      b: "b",
+      c: "c"
+    },
+    3: {
+      d: "d",
+      e: "e",
+      f: "f"
+    },
+    4: {
+      g: "g",
+      h: "h",
+      i: "i"
+    },
+    5: {
+      j: "j",
+      k: "k",
+      l: "l"
+    },
+    6: {
+      m: "m",
+      n: "n",
+      o: "o"
+    },
+    7: {
+      p: "p",
+      q: "q",
+      r: "r",
+      s: "s"
+    },
+    8: {
+      t: "t",
+      u: "u",
+      v: "v"
+    },
+    9: {
+      w: "w",
+      x: "x",
+      y: "y",
+      z: "z"
+    },
+  };
+  var wordString = "";
+  var result = [];
+  digitString.split('').forEach((char, index) => {
+    if (char in charObject) {
+      for (var key in charObject[char]) {
+        result.push(wordString.slice(0, index).concat(key));
+      }
+    } else {
+      wordString += char;
+    }
+  });
+  return result;
 }
+telephoneWords("1123");

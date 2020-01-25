@@ -43,7 +43,9 @@ class Stack {
      return  this.storage.length
     }
 }
+//Time complexity of Big O(n)
 var reverseLinkedList = function(linkedList) {
+  //Here there is a bug need to check it out.
   while(linkedList.next !== null){
       reverseStack.push(linkedList.value)
   }

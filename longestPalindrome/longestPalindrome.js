@@ -15,16 +15,13 @@ function longestPalindrome(string) {
   let longestPalid = "";
   // split by words
   string.split(" ").forEach((word, index, array) => {
-    // take the word before it
-    // if ((prevWord = index >= 0)) {
-    // }
-    let prevWord = index > 0 ? array[index - 1] : "";
-    let nextWord = array[index + 1];
-
+    let prevWord = index > 0 && array[index - 1] ? array[index - 1] : "";
+    let nextWord =
+      index < array.length - 1 && array[index + 1] ? array[index + 1] : "";
     // reverse word
     if (reverse(word) === word) {
-      for (let i = 0; i < array.length; i++) {
-        for (let j = array.length - 1; j >= 0; j--) {
+      for (let i = 0; i < nextWord.length; i++) {
+        for (let j = prevWord.length - 1; j >= 0; j--) {
           let newWord = `${prevWord[j]}  ${word}  ${nextWord[i]}`;
           longestPalid =
             reverse(newWord) === newWord && newWord.length > longestPalid.length
@@ -38,6 +35,8 @@ function longestPalindrome(string) {
   return longestPalid;
 }
 longestPalindrome("My dad is a racecar athlete");
+longestPalindrome("dad");
+
 // input string
 // output string
 // constraints none

@@ -15,9 +15,23 @@ function longestPalindrome(string) {
   let longestPalid = "";
   // split by words
   string.split(" ").forEach((word, index, array) => {
+    // take the word before it
+    // if ((prevWord = index >= 0)) {
+    // }
+    let prevWord = index > 0 ? array[index - 1] : "";
+    let nextWord = array[index + 1];
+
     // reverse word
     if (reverse(word) === word) {
-      longestPalid = word.length > longestPalid.length ? word : longestPalid;
+      for (let i = 0; i < array.length; i++) {
+        for (let j = array.length - 1; j >= 0; j--) {
+          let newWord = `${prevWord[j]}  ${word}  ${nextWord[i]}`;
+          longestPalid =
+            reverse(newWord) === newWord && newWord.length > longestPalid.length
+              ? newWord
+              : longestPalid;
+        }
+      }
     }
   });
   console.log(longestPalid);

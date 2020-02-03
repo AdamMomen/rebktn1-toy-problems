@@ -38,6 +38,7 @@
 // edge cases none
 
 var flatten = function(root) {
+  var p;
   let i = 0;
   debugger;
   var linkedlist;
@@ -58,12 +59,14 @@ var flatten = function(root) {
   }
   const linked = traverse(root);
   console.log(linked);
+
   // iterate over an array push the values there
   while (i < linked.length) {
     if (i === 0) {
-      linkedlist = new Node(linked[i]);
+      p = linkedlist = new Node(linked[i]);
     }
-    linkedlist = linkedlist.next = new Node(linked[i]);
+    p = p.next = new Node(linked[i]);
+    //linkedlist = linkedlist.next = new Node(linked[i]);
     i++;
   }
   console.log(linkedlist);

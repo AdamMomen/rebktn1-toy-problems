@@ -20,7 +20,26 @@ In other words, find all the possible combinations of coins that sum to a given 
 
 // HELPERS
 var coins = [1, 2, 5, 10, 20, 50, 100, 200];
+// Output: array of posibilites
+// Input: nubmer
+// Constraints: none.
+// Edge Cases: none.
 
 function coinSums(total) {
-  // your code here...
+  // iterate
+  //naive solution
+  let counter = 1;
+  let result = coins.map(one => {
+    counter = 1;
+    if (one > total) {
+      return;
+    }
+    while (counter * one < total) {
+      counter++;
+    }
+    return one * counter === total ? counter * one : coinSums();
+  });
+  // the compilation number === total
+  console.log(result);
 }
+coinSums(5);

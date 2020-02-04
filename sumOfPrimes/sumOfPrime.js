@@ -19,7 +19,7 @@ function sumOfPrimes(n) {
     }
     n--;
   }
-  console.log(result);
+  console.log(result + 2);
   return result;
 }
-sumOfPrimes(10);
+sumOfPrimes(13);

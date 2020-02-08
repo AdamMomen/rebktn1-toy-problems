@@ -22,7 +22,6 @@ volume([1,2,3,2,1]) // 0
 // Output: number
 // Constraints: O(n) linear
 // Edge cases: none.
-
 //Naive solution:
 function volume(heights) {
   let volume = 0;
@@ -37,6 +36,6 @@ function volume(heights) {
   console.log(volume);
   return volume;
 }
-volume([3, 0, 3]); // 3
+volume([4, 0, 0, 4]); // 3
 volume([1, 2, 3, 4, 0, 5, 3, 1]); // 4
 volume([1, 2, 3, 2, 1]); // 0

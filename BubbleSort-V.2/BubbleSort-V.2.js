@@ -15,8 +15,17 @@
 // input: [ 20, -10, -10, 2, 4, 299 ]
 // Output:	[ -10, -10, 2, 4, 20, 299 ]
 
-
 function bubbleSort(input) {
-    // Write your code here, and
-    // return your final answer.
+  for (let i = 0; i < input.length; i++) {
+    for (let j = 0; j < input.length; j++) {
+      if (input[i] < input[j]) {
+        let temp = input[i];
+        input[i] = input[j];
+        input[j] = temp;
+      }
+    }
+  }
+  console.log(input);
+  return input;
 }
+bubbleSort([20, -10, -10, 2, 4, 299]);

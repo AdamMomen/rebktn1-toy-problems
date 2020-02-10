@@ -14,18 +14,24 @@
 // Examples
 // input: [ 20, -10, -10, 2, 4, 299 ]
 // Output:	[ -10, -10, 2, 4, 20, 299 ]
-
-function bubbleSort(input) {
-  for (let i = 0; i < input.length; i++) {
-    for (let j = 0; j < input.length; j++) {
-      if (input[i] < input[j]) {
-        let temp = input[i];
-        input[i] = input[j];
-        input[j] = temp;
-      }
-    }
+// // Edge Case:  The array is already sorted !!!
+function bubbleSort(input, index1 = 0) {
+  if (index1 === input.length - 1 || !count) {
+    return input;
   }
-  console.log(input);
-  return input;
+  function bubbleSortHelper(array, index1, index2 = 0, count = 0) {
+    if (index2 === array.length - 1) {
+      return;
+    }
+    if (array[index1] < array[index2]) {
+      count + 1;
+      let temp = array[index1];
+      array[index1] = array[index2];
+      array[index2] = temp;
+    }
+    bubbleSortHelper(input, index1, index2 + 1, count);
+  }
+  bubbleSortHelper(input, index1, count + 1);
+  return bubbleSort(input, index1 + 1);
 }
-bubbleSort([20, -10, -10, 2, 4, 299]);
+console.log(bubbleSort([20, -10, -10, 2, 4, 299]));

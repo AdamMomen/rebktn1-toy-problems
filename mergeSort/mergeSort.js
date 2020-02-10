@@ -1,7 +1,10 @@
 /*
 Implement a function that sorts an array of numbers using the "mergesort" algorithm.
 
-Mergesort uses a divide-and-conquer strategy. It begins by treating the input list of length N as a set of N "sublists" of length 1, which are considered to be sorted. Adjacent sublists are then "merged" into sorted sublists of length 2, which are merged into sorted sublists of length 4, and so on, until only a single sorted list remains. (Note, if N is odd, an extra sublist of length 1 will be left after the first merge, and so on.)
+Mergesort uses a divide-and-conquer strategy. It begins by treating the input list of length N as a set of N "sublists" of length 1,
+ which are considered to be sorted. Adjacent sublists are then "merged" into sorted sublists of length 2,
+  which are merged into sorted sublists of length 4, and so on, until only a single sorted list remains.
+   (Note, if N is odd, an extra sublist of length 1 will be left after the first merge, and so on.)
 
 This can be implemented using either a recursive ("top-down") or an iterative ("bottom-up") approach.
 
@@ -70,6 +73,30 @@ Array.prototype.sort = function() {
   console.log("please don't use the native sort function!");
 };
 
-function mergeSort(arr) {
-  // your code here...
+function mergeSort(arr, startIdx = 0, endIdx) {
+  console.log(endIdx);
+  endIdx = endIdx || arr.length;
+  let midIdx = Math.floor(endIdx - startIdx / 2);
+  console.log(startIdx, endIdx, midIdx);
+  if (startIdx === endIdx) {
+    console.log("end");
+    return;
+  }
+  /*
+    input: array of numbers ;
+    Output: array of numbers;
+    Constraints: none:
+    Edge Cases: none.
+    */
+
+  //Naive solution
+  // appraoach using recursion
+  // split the array into two halfs
+  // (until we have got zero array element or 1 )
+  console.log("left");
+  mergeSort(arr, startIdx, midIdx - 1); // split left
+  console.log("rights");
+  mergeSort(arr, midIdx + 1, arr.length - 1); // split right
 }
+function mergeSortHelper(mainArray, startIdx, endIdx) {}
+mergeSort([1, 2, 3, 4]);

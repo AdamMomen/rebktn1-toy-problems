@@ -13,18 +13,23 @@ Caveats:
   • If obj.trigger is called with additional arguments, pass those to the listeners.
   • It is not necessary to write a way to remove listeners.
 */
+// Input: object
+// Output: Object
+// Constraints: none
+// edge Case: calling the obj repeatively
 
-var mixEvents = function (obj) {
+//question
+var mixEvents = function(obj) {
+  // your code here...
+  var events = {};
+
+  obj.trigger = function(event) {
     // your code here...
-    var events = {};
+  };
 
-    obj.trigger = function (event) {
-        // your code here...
-    };
-
-    // Register a callback to be fired on this event.
-    obj.on = function (event, callback) {
-        // your code here...
-    };
-    return obj;
+  // Register a callback to be fired on this event.
+  obj.on = function(event, callback) {
+    // your code here...
+  };
+  return obj;
 };

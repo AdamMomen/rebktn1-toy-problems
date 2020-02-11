@@ -18,10 +18,18 @@ Caveats:
 // Constraints: none
 // edge Case: calling the obj repeatively
 
-//question
+//questions
+// are the events hardcoded
 var mixEvents = function(obj) {
-  // your code here...
-  var events = {};
+  var events = {
+    ageChange: callback => {
+      proxy = new Proxy(obj, {
+        set: function(object, property, value, proxy) {
+          callback();
+        }
+      });
+    }
+  };
 
   obj.trigger = function(event) {
     // your code here...
@@ -29,7 +37,7 @@ var mixEvents = function(obj) {
 
   // Register a callback to be fired on this event.
   obj.on = function(event, callback) {
-    // your code here...
+    // this might call obj.trigger function
   };
   return obj;
 };

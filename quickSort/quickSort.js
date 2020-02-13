@@ -23,6 +23,8 @@ Extra Credit: Perform the sort in place. Watch how at https://www.youtube.com/wa
 NOTE: DO NOT use JavaScript’s built-in sorting function (Array.prototype.sort).
 */
 
-function quickSort(arr) {
-  // your code here...
+function quickSort(arr, left, right) {
+  // PseudoCode
+  // take the pivot
+  //  t
 }

@@ -75,13 +75,15 @@ Array.prototype.sort = function() {
 
 function mergeSort(arr, startIdx = 0, endIdx) {
   console.log(endIdx);
-  endIdx = endIdx || arr.length;
-  let midIdx = Math.floor(endIdx - startIdx / 2);
-  console.log(startIdx, endIdx, midIdx);
-  if (startIdx === endIdx) {
+  if (startIdx < endIdx) {
     console.log("end");
     return;
   }
+  // console.log(endIdx);
+  dendIdx = endIdx || arr.length - 1;
+  let midIdx = Math.floor(lastIdx - startIdx / 2);
+  console.log(startIdx, lastIdx, midIdx);
+
   /*
     input: array of numbers ;
     Output: array of numbers;

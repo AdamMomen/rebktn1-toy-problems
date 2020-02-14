@@ -1,7 +1,15 @@
 // Binary Heap
-// A heap is a special kind of tree in which a parent node is ordered only in respect to its immediate children. Unlike the binary search tree you may have implemented, where the entire tree is ordered, in a heap the only order guaranteed is between a node and its parent.
+// A heap is a special kind of tree in which a parent node is ordered only in respect to its immediate children.
+// Unlike the binary search tree you may have implemented, where the entire tree is ordered,
+// in a heap the only order guaranteed is between a node and its parent.
 
-// In a binary heap each node should have only zero, one, or two children. Each node must have 2 children before the next oldest node can have any children. Therefore the 0th node will be the parent of the 1st and 2nd nodes, the 1st node will be the parent of the 3rd and 4th nodes, and the 2nd node will be the parent of the 5th and 6th nodes. In a specific kind of binary heap, the binary min heap, every node is less than its immediate children:
+// In a binary heap each node should have only zero, one, or two children.
+// Each node must have 2 children before the next oldest node can have any children.
+// Therefore the 0th node will be the parent of the 1st and 2nd nodes,
+// the 1st node will be the parent of the 3rd and 4th nodes,
+// and the 2nd node will be the parent of the 5th and 6th nodes.
+// In a specific kind of binary heap, the binary min heap,
+// every node is less than its immediate children:
 // ……..0…….
 // …1………2..
 // .3…4…..5…6
@@ -14,7 +22,7 @@
 // where we always add to or remove from the end of the array.
 
 // A well known fact, utilized with binary heaps stored in arrays, is that we can calculate the index of a node’s parent or children using math:
-// parentIndex = Math.floor((index - 1) / 2 )
+//  = Math.floor((index - 1) / 2 )
 // childrenIndices = [index * 2 + 1, index * 2 + 2]
 
 // When adding a new node to a binary min heap, it could be that we violate the property of the heap whereby every node is of lower value than its children. Thus whenever we insert into a binary min heap, we must compare the inserted node to its parent, and swap their positions if it is less than its parent. After a swap it must compare itself to its new parent, continuing until it is no longer less than its parent.
@@ -23,19 +31,37 @@
 
 // You can see a great visualization of a binary min heap in action here, play around with it until you can easily guess how the heap will behave with both insertion and removal: https://www.cs.usfca.edu/~galles/visualization/Heap.html
 
-
 function BinaryHeap() {
-    this._heap = [];
-    // this compare function will result in a minHeap, use it to make comparisons between nodes in your solution
-    this._compare = function (i, j) { return i < j };
+  this._heap = [];
+  // this compare function will result in a minHeap, use it to make comparisons between nodes in your solution
+  this._compare = function(i, j) {
+    return i < j;
+  };
 }
 // This function works just fine and shouldn't be modified
-BinaryHeap.prototype.getRoot = function () {
-}
-BinaryHeap.prototype.insert = function (value) {
-    // TODO: Your code here
+BinaryHeap.prototype.getRoot = function() {
+  //this._heap[
+  return Math.floor((this._heap.length - 1 - 1) / 2);
+  //];
+};
+BinaryHeap.prototype.insert = function(value) {
+  // insert a value to the heap
+  let index = this._heap.length - 1;
+  this._heap.push(value);
+  if (index) {
+    if (this._compare(value, this._heap[this.getRoot()])) {
+      // Swap them
+      let temp = this._heap[this.getRoot()];
+      this._heap[this.getRoot()] = this._heap[index];
+      this._heap[index] = temp;
+    }
+  }
+};
+BinaryHeap.prototype.removeRoot = function() {
+  this.getRoot();
+};
 
-}
-BinaryHeap.prototype.removeRoot = function () {
-    // TODO: Your code here
-}
+// INPUT: NUMBER
+// OUTPUT: TREE
+// CONSTRAINTS: NONE
+// Edge Cases: NONE

@@ -29,9 +29,30 @@ EXTRA CREDIT
   • Make your function accept a parameter for the direction of rotation (1 = clockwise, -1 = counterclockwise)
 Important note: In mathematics, and generally in CS, matrices are identified as m-by-n, where m is the number of rows and n is the number of columns. 
 So an [i][j] address in a matrix will be i places down, and j places over. 
-This usually matches the way arrays are addressed in code, but keep in mind that it differs from use in geometry and computer graphics, where coordinates of the form (x,y) are usually x units over, and y units down.
+This usually matches the way arrays are addressed in code, but keep in mind that it differs from use in geometry and computer graphics,
+where coordinates of the form (x,y) are usually x units over, and y units down.
 */
 
 function rotateMatrix(matrix) {
-  // your code here...
+  // Input: array
+  // Output: 90deg rotated Array
+  // constraints: make it generic for mxn
+  // Edge Cases: none
+  // Psuedocode
+  // iterate over it
+  let temp;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = i + 1; j < matrix.length; j++) {
+      temp = matrix[i][j];
+      matrix[i][j] = matrix[j][i];
+      matrix[j][i] = temp;
+    }
+  }
+  console.log(matrix);
 }
+rotateMatrix([
+  [1, 2, 3, 4],
+  [5, 6, 7, 8],
+  [9, "A", "B", "C"],
+  ["D", "E", "F", "G"]
+]);

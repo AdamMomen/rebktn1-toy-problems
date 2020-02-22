@@ -1,4 +1,4 @@
-// Given a number n (represented as a binary number string), convert n to base 10. Do NOT use parseInt(n, 2). 
+// Given a number n (represented as a binary number string), convert n to base 10. Do NOT use parseInt(n, 2).
 // You may use the parseInt function that takes in just one argument.
 
 // Examples
@@ -11,10 +11,14 @@
 // n:"101"	 5
 // n:"110"	 6
 // n:"111"	 7
-// n:"1000"	 8 
+// n:"1000"	 8
 
-
-
-function binaryToDecimal (n) {
-// code gose here 
+function binaryToDecimal(n) {
+  let result = 0;
+  let counter = 0;
+  for (let i = n.length - 1; i >= 0; i--) {
+    result += Number(n[i]) * 2 ** counter++;
+  }
+  return result;
 }
+console.log(binaryToDecimal("10000000"));

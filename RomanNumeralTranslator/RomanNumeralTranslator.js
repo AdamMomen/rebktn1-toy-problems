@@ -31,19 +31,38 @@ function translateRomanNumeral(romanNumeral) {
    C: None
    E: None
    */
-  // check input type is string
-  return typeof romanNumeral === "string"
-    ? // Pseudecode:
-      // split + iterate
-      romanNumeral.split("").reduce((acc, element) => {
-        // check if not acctual roman numer
-        if (!DIGIT_VALUES[element]) {
-          // return null
-          return null;
-        }
-        // add the accumlator by currnent value of the element
-        return acc + DIGIT_VALUES[element];
-      }, 0)
-    : // if not a string return null.
-      null;
+  "LXX";
+  let results = 0;
+  romanNumeral = Array.from(arguments);
+  while (romanNumeral.length > 0) {
+    if (DIGIT_VALUES[romanNumeral[0]] > DIGIT_VALUES[romanNumeral[1]]) {
+      results += DIGIT_VALUES[romanNumeral[0]];
+      console.log(results);
+      romanNumeral.splice(0, 1);
+    } else if (DIGIT_VALUES[romanNumeral[0]] < DIGIT_VALUES[romanNumeral[1]]) {
+      results += romanNumeral[1] - romanNumeral[0];
+      romanNumeral.splice(0, 2);
+    }
+  }
+  return results;
 }
+
+console.log(translateRomanNumeral("LXX"));
+
+// check input type is string
+//   return typeof romanNumeral === "string"
+//     ? // Pseudecode:
+//       // split + iterate
+//       romanNumeral.split("").reduce((acc, element) => {
+//         // check if not acctual roman numer
+//         if (!DIGIT_VALUES[element]) {
+//           // return null
+//           return null;
+//         }
+//         // add the accumlator by currnent value of the element
+//
+//         return acc + DIGIT_VALUES[element];
+//       }, 0)
+//     : // if not a string return null.
+//       null;
+/**/

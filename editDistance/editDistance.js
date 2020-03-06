@@ -25,22 +25,22 @@ function editDistance(str1, str2) {
   // push index @ i-1 & j-1
   // fill the how are
 
-  // big O(n^2)
-  var board = [],
+  // Time Complexity O(n^2)
+  let board = [],
     i,
     j;
-  if (!str1.length) return str2.length;
-  if (!str2.length) return str1.length;
+  if (str1.length === 0) return str2.length;
+  if (str2.length === 0) return str1.length;
 
-  for (i = 0; i < str1.length; i++) {
+  for (i = 0; i <= str2.length; i++) {
     board[i] = [i];
   }
-  for (j = 0; j < str2.length; j++) {
+  for (j = 0; j <= str1.length; j++) {
     board[0][j] = j;
   }
-  for (i = 1; i < str1.length; i++) {
-    for (j = 1; j < str2.length; j++) {
-      if (str2.charAt(i - 1) == str1.charAt(j - 1)) {
+  for (i = 1; i <= str2.length; i++) {
+    for (j = 1; j <= str1.length; j++) {
+      if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
         board[i][j] = board[i - 1][j - 1];
       } else {
         board[i][j] = Math.min(
@@ -51,7 +51,7 @@ function editDistance(str1, str2) {
       }
     }
   }
-  return board[str1.length - 1][str2.length - 1];
+  return board[str2.length][str1.length];
 }
 
-console.log(editDistance("sunday", "wednesday"));
+console.log(editDistance("hackerrank", "hackreactor"));
